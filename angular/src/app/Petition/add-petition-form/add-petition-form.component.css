@@ -1,0 +1,46 @@
+#janaka{
+   
+    color: rgb(0, 255, 76);
+}
+#janaka2{
+    color: blueviolet;
+}
+
+.active{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: blue;
+    color: aliceblue;
+}
+
+.inactive{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: rgb(84, 87, 85);
+    color: aliceblue;
+}
+
+.success{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: rgb(5, 105, 38);
+    color: aliceblue;
+}
+
+
+#inactiveDiv{
+    display: none;
+}
+
+#bold{
+    font-weight: bold;
+    /* color: blue; */
+}
+
+#image2{
+display: none;
+}
+

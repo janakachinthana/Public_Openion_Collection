@@ -1,0 +1,17 @@
+#seeMore{
+    height: 35px;
+   
+}
+
+#seeLess{
+    height: auto;
+   
+}
+
+#seeMoreBtn{
+    cursor: pointer;
+}
+
+#inactive{
+    display: none;
+}

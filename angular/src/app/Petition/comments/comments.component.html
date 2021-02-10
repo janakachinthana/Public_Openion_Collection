@@ -1,0 +1,117 @@
+<div>
+
+  <h1 style="color: rgb(34, 231, 16);">Comments</h1>
+  <br><br>
+  <div class="card bg-dark mb-3"  *ngFor="
+      let comment of comments | filter:searchText">
+    <div class="card-header">
+      <div class="bg-dark" style="height: 40px; width: 40px; border-radius: 100%; margin: auto;">
+        <img src="/assets/img/user.png" style="width: 40px; height: 40px; border-radius: 100%;">
+      </div>
+      {{comment.auther}} &nbsp;&nbsp;
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-1">
+          <button class="btn btn-outline-success" *ngIf="user == comment.auther" (click)="editComment(comment)">Edit</button>
+       </div>
+        <div class="col-md-1">
+        <button class="btn btn-outline-danger" *ngIf="user == comment.auther" (click)="delete(comment)">delete</button>
+        </div>
+      </div>
+      <p class="card-text">{{comment.message}}</p>
+    
+    </div>
+ </div>
+  <div class="card-footer bg-light border-top">
+    <div class="row">
+      <div class="col-sm-4 col-12 text-sm-left text-center">
+        <button class="btn btn-secondary" (click)="refresh()">
+          <i class="fas fa-redo-alt"></i>
+        </button>
+      </div>
+      <div class="col-sm-4 col-12 text-center">
+    
+      </div>
+      <div class="col-sm-4 col-12">
+        <div class="float-sm-right m-auto">
+          <abp-pagination-controls id="server" (pageChange)="getDataPage($event)">
+          </abp-pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- 
+
+
+<div [@routerTransition]>
+  <section class="content-header">
+  </section>
+  <section class="content px-2">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+            <thead class="bg-light">
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th style="width: 200px;">{{ "Actions" | localize }}</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="
+                    let petition of comments
+                    | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: pageSize,
+                            currentPage: pageNumber,
+                            totalItems: totalItems
+                          } 
+                  ">
+                <td>{{ petition.message }}</td>
+                <td>{{ petition.petitionId }}</td>
+                <td>
+                  <button type="button" class="btn btn-sm bg-secondary" (click)="editPetition(petition)">
+                    <i class="fas fa-pencil-alt"></i>
+                    {{ "Edit" | localize }}
+                  </button>
+                  <button type="button" class="btn btn-sm bg-danger mx-2" (click)="delete(petition)">
+                    <i class="fas fa-trash"></i>
+                    {{ "Delete" | localize }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer bg-light border-top">
+          <div class="row">
+            <div class="col-sm-4 col-12 text-sm-left text-center">
+              <button class="btn btn-secondary" (click)="refresh()">
+                <i class="fas fa-redo-alt"></i>
+              </button>
+            </div>
+            <div class="col-sm-4 col-12 text-center">
+              <p class="mb-0 my-2">
+                {{ "TotalRecordsCount" | localize: totalItems }}
+              </p>
+            </div>
+            <div class="col-sm-4 col-12">
+              <div class="float-sm-right m-auto">
+                <abp-pagination-controls id="server" (pageChange)="getDataPage($event)">
+                </abp-pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div> -->

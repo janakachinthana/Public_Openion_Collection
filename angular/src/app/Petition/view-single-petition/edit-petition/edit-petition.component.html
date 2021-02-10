@@ -1,0 +1,55 @@
+<div class="col-md-12">
+    <div class="row text-center bg-info">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <br><br>
+            <div class="card">
+                <h1 class="text-info">Hi {{user}}</h1>
+            </div>
+            <div style="border-radius: 15px;">
+                <h1 *ngIf="id == null">Add Your Petition here..</h1>
+                <h1 *ngIf="id != null">Edit Your Petition here..</h1>
+                <hr><br>
+
+                <form #commentForm="ngForm" (ngSubmit)="save()">
+                    <input type="text"
+                    style="width: 100%; text-align: center; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+                    name="title"
+                    placeholder="type here.." 
+                    required
+                    [(ngModel)]="petition.title" 
+                    >
+                    <input type="text"
+                    style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+                    name="category"
+                    required
+                    [(ngModel)]="petition.category" 
+                    hidden
+                    >
+                    <input type="number"
+                    style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+                    name="likes"
+                    placeholder="type here.." 
+                    required
+                    [(ngModel)]="petition.likes" 
+                    hidden
+                    > <input type="text"
+                    style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+                    name="auther"
+                    placeholder="type here.." 
+                    required
+                    [(ngModel)]="petition.auther" 
+                    hidden
+                    >
+                   
+                    <textarea class="form-control" rows="6" style="border-radius: 5px;" id="textArea"
+                        placeholder="type here..." name="message" placeholder="type here.." required
+                        [(ngModel)]="petition.description"></textarea>
+                    <br>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>

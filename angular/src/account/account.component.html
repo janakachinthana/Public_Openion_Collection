@@ -1,0 +1,15 @@
+﻿
+<!-- <img src="/assets/img/bg1.png" id="myVideo" style="opacity: .5;"> -->
+<div class="login-box">
+  <div class="card bg-info">
+    <div *ngIf="showTenantChange()" class="card-header">
+      <account-header></account-header>
+    </div>
+    <div class="card-body login-card-body">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="card-footer">
+      <account-footer></account-footer>
+    </div>
+  </div>
+</div>

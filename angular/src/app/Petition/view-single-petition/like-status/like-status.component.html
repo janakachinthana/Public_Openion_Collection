@@ -1,0 +1,92 @@
+<div class="content" [@routerTransition] [busy]="isTableLoading">
+  <button class="{{like}}" (click)="likeBtn(1)" >
+  <i class="fas fa-thumbs-up"></i>
+</button>
+&nbsp;&nbsp; <b>{{petitionLike.likes}}</b> 
+&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="{{dislike}}" >
+  <i class="fas fa-thumbs-down" (click)="likeBtn(2)"></i>
+</button>
+&nbsp;&nbsp; <b>{{petitionLike.disLikes}}</b>&nbsp;&nbsp; 
+<button class="btn btn-info" (click)="login()" *ngIf="user==null">
+Login
+</button>
+ </div>
+ <div *ngIf="user==null" class="text-danger"><a><b>You have to login first before add a comment or make a like</b></a></div>
+<!--     
+
+
+<div [@routerTransition]>
+  <section class="content-header">
+  </section>
+  <section class="content px-2">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+            <thead class="bg-light">
+              <tr>
+                <th>Title</th>
+                <th>uderID</th>
+                <th>like</th>
+                <th>dilike</th>
+                <th>Description</th>
+                <th style="width: 200px;">{{ "Actions" | localize }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="
+                    let petition of likeStatus
+                      | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: pageSize,
+                            currentPage: pageNumber,
+                            totalItems: totalItems
+                          }
+                  ">
+                <td>{{ petition.petitionId }}</td>
+                <td>{{ petition.userId }}</td>
+                <td>{{ petition.like }}</td>
+                <td>{{ petition.disLike }}</td>
+                <td>
+                  <button type="button" class="btn btn-sm bg-secondary" (click)="editPetition(petition)">
+                    <i class="fas fa-pencil-alt"></i>
+                    {{ "Edit" | localize }}
+                  </button>
+                  <button type="button" class="btn btn-sm bg-danger mx-2" (click)="delete(petition)">
+                    <i class="fas fa-trash"></i>
+                    {{ "Delete" | localize }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer bg-light border-top">
+          <div class="row">
+            <div class="col-sm-4 col-12 text-sm-left text-center">
+              <button class="btn btn-secondary" (click)="refresh()">
+                <i class="fas fa-redo-alt"></i>
+              </button>
+            </div>
+            <div class="col-sm-4 col-12 text-center">
+              <p class="mb-0 my-2">
+                {{ "TotalRecordsCount" | localize: totalItems }}
+              </p>
+            </div>
+            <div class="col-sm-4 col-12">
+              <div class="float-sm-right m-auto">
+                <abp-pagination-controls id="server" (pageChange)="getDataPage($event)">
+                </abp-pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div> -->
+
+
+

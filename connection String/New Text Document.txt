@@ -1,0 +1,10 @@
+ASP.NET
+"Data Source=SQL5050.site4now.net;Initial Catalog=DB_A6A636_qaOpinionBE;User Id=DB_A6A636_qaOpinionBE_admin;Password=YOUR_DB_PASSWORD
+	
+Classic ASP
+"Provider=SQLOLEDB;Data Source=SQL5050.site4now.net;Initial Catalog=;User Id=DB_A6A636_qaOpinionBE_admin;Password=YOUR_DB_PASSWORD
+	
+
+PHP
+mssql_connect('SQL5050.site4now.net', 'DB_A6A636_qaOpinionBE_admin', 'YOUR_DB_PASSWORD)
+	

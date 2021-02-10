@@ -1,0 +1,128 @@
+<div [@routerTransition]>
+  <h4 class="text-center mb-3">Register</h4>
+  <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="save()">
+    <div class="row">
+
+
+      <div class="col-6">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="name" placeholder="First Name" required maxlength="64"
+              [(ngModel)]="model.name" #nameModel="ngModel" #nameEl />
+            <!-- <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-arrow-left"></span>
+          </div>
+        </div> -->
+          </div>
+
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="surname" placeholder="Last Name" required maxlength="64"
+              [(ngModel)]="model.surname" #surnameModel="ngModel" #surnameEl />
+            <!-- <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-arrow-left"></span>
+          </div>
+        </div> -->
+          </div>
+
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="number" class="form-control" name="age" placeholder="Age" [(ngModel)]="model.password" required
+              maxlength="32" #passwordModel="ngModel" #passwordEl />
+            <!-- <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-lock"></span>
+          </div>
+        </div> -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="age" placeholder="Gender" [(ngModel)]="model.password"
+              required maxlength="32" #passwordModel="ngModel" #passwordEl />
+            <!-- <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-lock"></span>
+          </div>
+        </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="age" placeholder="Address Line_1" [(ngModel)]="model.password"
+              required maxlength="32" #passwordModel="ngModel" #passwordEl />
+            <!-- <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div> -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="age" placeholder="Address Line_2" [(ngModel)]="model.password"
+              required maxlength="32" #passwordModel="ngModel" #passwordEl />
+            <!-- <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div> -->
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="age" placeholder="City" [(ngModel)]="model.password" required
+              maxlength="32" #passwordModel="ngModel" #passwordEl />
+            <!-- <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div> -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="age" placeholder="Province" [(ngModel)]="model.password"
+              required maxlength="32" #passwordModel="ngModel" #passwordEl />
+            <!-- <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <button type="submit" class="btn btn-primary btn-block">
+          Submit
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-5"> </div>
+        <div class="col-md-5">
+        <a href="account/login">
+          Skip
+        </a>
+      </div>
+    </div>
+
+
+
+  </form>
+</div>

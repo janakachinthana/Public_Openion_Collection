@@ -1,0 +1,184 @@
+<div class="col-md-12">
+  <form #petitionForm="ngForm" (ngSubmit)="save()">
+    <hr>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="row text-center">
+          <div class="col-md-2 "></div>
+          <div class="col-md-2 ">
+            <div class="{{step1}}" style="font-size: 30px;"> 1</div>
+            <i class="{{icon1}}"></i>
+          </div>
+          <div class="col-md-2">
+            <div class="{{step2}}" style="font-size: 30px;"> 2</div>
+            <i class="{{icon2}}"></i>
+          </div>
+          <div class="col-md-2">
+            <div class="{{step3}}" style="font-size: 30px;"> 3</div>
+            <i class="{{icon3}}"></i>
+          </div>
+          <div class="col-md-2">
+            <div class="{{step4}}" style="font-size: 30px;"> 4</div>
+            <i class="{{icon4}}"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <br>
+    <div class="row text-center" id="{{step1Div}}">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h1 style="font-size: 45px;">Write your petition title</h1>
+        <a>This is the first thing people will see about your petition. Get their attention with a short title that
+          focusses on the change you’d like them to support.</a>
+        <br>
+        <br>
+       
+        <input type="text"
+          style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+          name="title"
+          placeholder="type here.." 
+          required
+          [(ngModel)]="petition.title" 
+          >
+         
+          <input type="text"
+          style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+          name="category"
+          required
+          [(ngModel)]="petition.category" 
+          hidden
+          >
+
+          <input type="number"
+          style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+          name="likes"
+          placeholder="type here.." 
+          required
+          [(ngModel)]="petition.likes" 
+          hidden
+          >
+          <input type="text"
+          style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+          name="auther"
+          placeholder="type here.." 
+          required
+          [(ngModel)]="petition.auther" 
+          hidden
+          >
+        
+          <br><br>
+
+        <button type="button" class="btn btn-outline-primary" (click)="goToStep2()">Continue</button>
+      </div>
+
+    </div>
+
+    <div class="row text-center" id="{{step1Div}}">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <br><br><br>
+        <h1>Keep it short and to the point</h1>
+        <a><b> Example:</b> "Buy organic, free-range eggs for your restaurants"</a>
+        <br>
+        <a> <b> Not: </b>"Stop the inhumane treatment of chickens in battery farms that are force-fed..."</a>
+        <br><br>
+        <h1>Focus on the solution</h1>
+        <a> <b> Example:</b> "Raise the minimum wage in Manchester to £15 an hour"</a>
+        <br>
+        <a><b> Not: </b> "Stop rising income inequality in Manchester"</a>
+        <br><br>
+        <h1>Communicate urgency</h1>
+        <a><b> Example:</b> "Approve life-saving medication for my daughter's insurance before it’s too late"</a>
+      </div>
+    </div>
+
+
+    <div class="row text-center" id="{{step2Div}}">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h1 style="font-size: 45px;">Great! Who has the power to make this change?</h1>
+        <a>Choose the recipient(s) of your petition. These are people or organisations with the power to solve your
+          problem or take the action you’re demanding.</a>
+        <br>
+        <input type="text"
+          style="width: 100%; height: 50px; border-radius: 5px; font-size: 35px; padding-left: 25px; padding-right: 25px;"
+          name="category"
+          required
+          [(ngModel)]="petition.category" 
+          disabled
+          >
+          <br>
+        <br>
+        <button type="button" class="btn btn-outline-primary" (click)="goToStep3()">Continue</button>
+        <br><br><br>
+      </div>
+    </div>
+
+    <div class="row text-center" id="{{step3Div}}">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h1 style="font-size: 45px;">Explain the problem you want to solve</h1>
+        <a>People are more likely to support your petition if it’s clear why you care. Explain how this change will
+          impact
+          you, your family, or your community.</a>
+        <br>
+        <br>
+        <div>
+          <button type="button" class="btn btn-dark" (click)="bold()" id="{{textArea}}" style="float: left;">B</button>
+        </div>
+        <textarea class="form-control" rows="5" style="border-radius: 5px;" id="{{textArea}}"  name="description"
+        placeholder="type here.." 
+        required
+        [(ngModel)]="petition.description"  ></textarea>
+        <br><br>
+      
+        <button type="button" class="btn btn-outline-primary" (click)="goToStep4()">Continue</button>
+      </div>
+    </div>
+
+    <div class="row text-center" id="{{step4Div}}">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h1 style="font-size: 45px;">Add a photo</h1>
+        <a>Petitions with a photo receive six times more signatures than those without. Include one that captures
+          the emotion of your story.</a>
+        <br>
+        <br>
+        <div id="{{image1}}">
+          <div class="position-relative">
+            <div class="js-dropzone add-media txt-c pvxxl mtn mbxs"><img
+                src="https://static.change.org/images/image-placeholder.svg" width="90"
+                class="position-block-center js-drop-down-animation hide-fully pvxxl mvm">
+              <div class="file-upload"><img src="https://static.change.org/images/image-placeholder-drop.svg"
+                  width="115" class="position-block-center"><input id="photo-file-input" type="file" name="file"
+                  accept="image/*" (change)="handleFileInput($event.target.files)" class="hide-visually">
+                <div class="mvm col-xs-12"><label id="upload-petition-photo" for="photo-file-input" type="button"
+                    class="btn phxxl">Upload photo</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="{{image2}}">
+          <img src="{{imageUrl}}" style="width: 100%;">
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-outline-primary">Finsh</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
+<!-- <button (click)="toggle()" id="bt">
+  {{buttonName}}
+</button>
+<div id="{{idname}}">
+  {{janaka}}
+</div>
+<div id="{{idname2}}">
+  {{janaka2}}
+</div> -->

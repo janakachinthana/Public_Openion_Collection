@@ -1,0 +1,112 @@
+<div class="col-md-12">
+    <br>
+
+    <div class="row  bg-info" style="padding: 10px; border-style: solid; border-color: black; border-radius: 15px;">
+
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <img src="assets/img/user.png" alt="" style="border-radius: 100%; width: 100%; ">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <h1> <b>Name:</b>{{userName}}</h1>
+            </div>
+            <div class="row text-dark">
+                <div class="col-md-4">
+                    <h3> <b>Age:</b> 27</h3>
+                    <h3> <b>Gender:</b> Male</h3>
+                    <h3> <b>Define:</b> Define</h3>
+                </div>
+                <div class="col-md-4">
+                    <h3> <b>Define:</b> Define</h3>
+                    <h3> <b>Define:</b> Define</h3>
+                    <h3> <b>Define:</b> Define</h3>
+                </div>
+                <div class="col-md-4">
+                    <h3> <b>Define:</b> Define</h3>
+                    <h3> <b>Define:</b> Define</h3>
+                    <h3> <b>Define:</b> Define</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 text-center">
+            <br><br><br>
+            <button class="btn btn-danger">Edit Profile</button>
+        </div>
+    </div>
+    <br>
+    <div class="row bg-dark" style="padding: 10px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <h3>Filter:</h3>
+        </div>
+        <div class="col-md-2">
+            <select  name="Category"  class="form-control" id="guide" (change)="selectChangeHandler($event)">
+                <option class="bg-dark" value="category">All Categories</option> 
+                <option value="Animals" > Animals </option>
+                <option value="Health" > Health </option>
+                <option value="Environment" > Environment </option>
+                <option value="Political" > Political </option>
+                <option value="Local" > Local </option>
+                <option value="Education" > Education </option>
+                <option value="Human Rights" > Human Rights </option>
+                <option value="Economic Equality" > Economic Equality </option>
+                <option value="Women`s Rights" > Women`s Rights </option>
+                <option value="LGBT Rights" > LGBT Rights </option>
+                <option value="Criminal Justice" > Criminal Justice </option>
+                <option value="Racial Justice" > Racial Justice </option>
+                <option value="Migration" > Migration </option>
+                <option value="Disability" > Disability </option>
+                <option value="Other" > Other </option>
+                       
+            </select>
+         
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="type here..." aria-label="Search" [(ngModel)]="searchText" >
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+        </div>
+    </div>
+    <br>
+    <!-- <div class="text-center" id="{{petitionxx}}"><h1 class="text-info"><br><b>Sorry...!, No Petitions you posted</b><br></h1></div>
+     -->
+    <div class="row" *ngFor="
+    let petition of petitions | filter:searchText">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" *ngIf="petition.auther == userName && (petition.category==Category || Category=='category')">
+
+            <div class="cardView">
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card bg-info">
+                            <h1 class="text-center">{{petition.title}}</h1>
+                        </div>
+
+                        <h5 (click)="seeMore()" id="seeMoreBtn"> <b>{{seeMoreBtn}}</b> </h5>
+                        <p class="card-text" id="{{SeeMore}}">{{petition.description}}</p>
+
+                        <img src="/assets/img/bg1.png" width="100%">
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <a class="btn btn-outline-primary" (click)="viewPst(petition)">View Post</a>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2">
+                                <button class="btn btn-outline-danger" (click)="delete(petition)">
+                                    <i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

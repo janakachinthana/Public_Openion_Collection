@@ -1,0 +1,63 @@
+<div class="col-md-12">
+  <br><br>
+  <div class="row text-center">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="card">
+        <h1 id="title">{{Petition.title}}</h1>
+      </div>
+      <div class="card">
+        <div class="row card-header">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <div class="card">
+                  <h1 style=" text-align: center; " class="text-info">Image</h1>
+                </div>
+               
+              </div>
+              <div class="card-body">
+                <img src="/assets/img/img1.jpg" class="img">
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-6 card">
+            <div class="card-header">
+              <div class="card">
+                <h1 style=" text-align: center; " class="text-info">Description</h1>
+              </div>
+              
+            </div>
+            <div class="card-body">
+              <h4 class="card-text" style="text-align: justify;"> <b>{{Petition.description}}</b></h4>
+            </div>
+          </div>
+        </div>
+        <div class="row card-body">
+          <div class="col-md-5">
+            <app-like-status></app-like-status>
+          </div>
+          <div class="col-md-3">
+            
+              <button class="btn btn-outline-success" *ngIf="Petition.auther == user" (click)="edtPetitionBtn()">Edit</button>
+          
+            <button class="btn btn-outline-danger"  *ngIf="Petition.auther == user" (click)="delete()">delete</button>
+        
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-outline-info" (click)="CommentBtn()" *ngIf="user != null">
+              <i class="fas fa-plus-circle"></i> Add Comment
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+      <div class="card">
+        <app-comments></app-comments>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,175 @@
+<div [@routerTransition]>
+  <br>
+  <div class="col-md-12 text-center">
+    <h1 class="toppic">The world’s platform for Opinion</h1>
+    <h5>419,953,127 people taking action.</h5>
+    <br><br>
+    <button class="btn btn-primary" (click)="category()"><i class="fa fa-plus-square"></i> Create Post</button>
+    <br><br><br><br>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+        <h3>Filter:</h3>
+      </div>
+      <div class="col-md-2">
+        <select  name="Category"  class="form-control" id="guide" (change)="selectChangeHandler($event)">
+          <option class="bg-dark" value="category">All Categories</option> 
+          <option value="Animals" > Animals </option>
+          <option value="Health" > Health </option>
+          <option value="Environment" > Environment </option>
+          <option value="Political" > Political </option>
+          <option value="Local" > Local </option>
+          <option value="Education" > Education </option>
+          <option value="Human Rights" > Human Rights </option>
+          <option value="Economic Equality" > Economic Equality </option>
+          <option value="Women`s Rights" > Women`s Rights </option>
+          <option value="LGBT Rights" > LGBT Rights </option>
+          <option value="Criminal Justice" > Criminal Justice </option>
+          <option value="Racial Justice" > Racial Justice </option>
+          <option value="Migration" > Migration </option>
+          <option value="Disability" > Disability </option>
+          <option value="Other" > Other </option>
+                 
+      </select>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
+        <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchText" placeholder="Search"
+          aria-label="Search">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+      </div>
+    </div>
+    <div style="margin-top: 50px;">
+      <div class="row" *ngFor="
+      let petition of petitions | filter:searchText
+        | paginate
+          : {
+              id: 'server',
+              itemsPerPage: pageSize,
+              currentPage: pageNumber,
+              totalItems: totalItems
+            }">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" *ngIf="petition.category==Category || Category == 'category'">
+
+          <div class="cardView">
+            <br>
+            <div class="card">
+              <div class="card-header">
+                <h2 class="text-center text-info toppic"><b>{{ petition.title }}</b></h2>
+                <img src="/assets/img/img1.jpg" class="img">
+                <br><br>
+                <div class="row">
+                  <div class="col-md-2 card" style="float: left;">
+                    <h5>
+                      likes
+                    </h5>
+                    <h1 class="text-info"><b>{{petition.likes}}</b></h1>
+                  </div>
+                  <div class="col-md-2"></div>
+                  <div class="col-md-3 card"><h5>Category</h5> <h2 class="text-info"><b>{{petition.category}}</b></h2></div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-4 card"><h5>Auther</h5> <h2 class="text-info"><b>{{petition.auther}}</b></h2></div>
+
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{ petition.description }}</p>
+                <div class="row">
+                   <div class="col-md-5"></div>
+                  <div class="col-md-2">
+                    <button (click)="viewPost(petition)" class="btn btn-primary">View Post</button>
+                  </div>
+                  <div class="col-md-2"></div>
+                  <div class="col-md-1">
+                    <button (click)="editPetition(petition)" class="btn btn-outline-dark" *ngIf="user==petition.auther"><i class="fas fa-pencil-alt"></i></button>
+                  </div>
+                  <div class="col-md-1">
+                    <button (click)="delete(petition)" class="btn btn-outline-danger" *ngIf="user==petition.auther"><i class="fas fa-trash"></i></button>
+                  </div>
+                
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
+
+
+<!-- 
+
+
+<div [@routerTransition]>
+  <section class="content-header">
+  </section>
+  <section class="content px-2">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+            <thead class="bg-light">
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th style="width: 200px;">{{ "Actions" | localize }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="
+                    let petition of petitions
+                      | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: pageSize,
+                            currentPage: pageNumber,
+                            totalItems: totalItems
+                          }
+                  ">
+                <td>{{ petition.title }}</td>
+                <td>{{ petition.description }}</td>
+                <td>
+                  <button type="button" class="btn btn-sm bg-secondary" (click)="editPetition(petition)">
+                    <i class="fas fa-pencil-alt"></i>
+                    {{ "Edit" | localize }}
+                  </button>
+                  <button type="button" class="btn btn-sm bg-danger mx-2" (click)="delete(petition)">
+                    <i class="fas fa-trash"></i>
+                    {{ "Delete" | localize }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer bg-light border-top">
+          <div class="row">
+            <div class="col-sm-4 col-12 text-sm-left text-center">
+              <button class="btn btn-secondary" (click)="refresh()">
+                <i class="fas fa-redo-alt"></i>
+              </button>
+            </div>
+            <div class="col-sm-4 col-12 text-center">
+              <p class="mb-0 my-2">
+                {{ "TotalRecordsCount" | localize: totalItems }}
+              </p>
+            </div>
+            <div class="col-sm-4 col-12">
+              <div class="float-sm-right m-auto">
+                <abp-pagination-controls id="server" (pageChange)="getDataPage($event)">
+                </abp-pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div> -->

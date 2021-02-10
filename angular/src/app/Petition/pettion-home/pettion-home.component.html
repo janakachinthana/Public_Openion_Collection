@@ -1,0 +1,223 @@
+<div [@routerTransition]>
+    <br>
+    <div class="col-md-12 text-center">
+        <h1 id="toppic">The world’s platform for Opinion</h1>
+        <h5>419,953,127 people taking action.</h5>
+        <br><br>
+        <button class="btn btn-primary" (click)="category()">Create Post</button>
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <h3>Filter:</h3>
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown mr-1">
+                    <button type="button" class="btn bg-light dropdown-toggle" id="dropdownMenuOffset"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                        Category
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+
+                        <a class="dropdown-item" href="#">Animals</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Health</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Environment</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Political</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Local</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Education</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Human Rights</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Economic Equality</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Women`s Rights</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">LGBT Rights</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Criminal Justice</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Racial Justice</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Migration</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Disability</a>
+                        <hr>
+                        <a class="dropdown-item" href="#">Other</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="row" *ngFor="
+            let petition of petitions
+              | paginate
+                : {
+                    id: 'server',
+                    itemsPerPage: pageSize,
+                    currentPage: pageNumber,
+                    totalItems: totalItems
+                  }
+          ">jnaka
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+
+                    <div class="cardView">
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="text-center">Special title treatment</h1>
+                                <img src="/assets/img/bg2.jpg" class="img">
+
+                                <div style="float: left;">
+                                    <button class="{{like}}" (click)="likeBtn()">
+                                        <i class="fas fa-thumbs-up"></i>
+                                    </button>
+                                    &nbsp;&nbsp; <b>{{likes}}</b>
+                                </div>
+                                <p class="card-text">The standard chunk of Lorem Ipsum used since the 1500s is
+                                    reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus
+                                    Bonorum et Malorum" by Cicero are also reproduced in their exact original form,
+                                    accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                                <a href="app/viewPetition" class="btn btn-primary">View Post</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+           
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div [@routerTransition]>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <h1>{{ "Petitions" | localize }}</h1>
+          </div>
+          <div class="col-6 text-right">
+            <a href="javascript:;" class="btn bg-blue" (click)="createPetition()">
+              <i class="fa fa-plus-square"></i>
+              {{ "Create" | localize }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content px-2">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-header">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <button
+                  type="button"
+                  class="btn bg-blue"
+                  (click)="getDataPage(1)"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                name="keyword"
+                [placeholder]="'SearchWithThreeDot' | localize"
+                [(ngModel)]="keyword"
+                (keyup.enter)="getDataPage(1)"
+              />
+            </div>
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+              <thead class="bg-light">
+                <tr>
+                  <th>{{ "PetitionName" | localize }}</th>
+                  <th>{{ "DisplayName" | localize }}</th>
+                  <th style="width: 200px;">{{ "Actions" | localize }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let petition of petitions
+                      | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: pageSize,
+                            currentPage: pageNumber,
+                            totalItems: totalItems
+                          }
+                  "
+                >
+                  <td>{{ petition.title }}</td>
+                  <td>{{ petition.title }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-sm bg-secondary"
+                      (click)="editPetition(petition)"
+                    >
+                      <i class="fas fa-pencil-alt"></i>
+                      {{ "Edit" | localize }}
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm bg-danger mx-2"
+                      (click)="delete(petition)"
+                    >
+                      <i class="fas fa-trash"></i>
+                      {{ "Delete" | localize }}
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer bg-light border-top">
+            <div class="row">
+              <div class="col-sm-4 col-12 text-sm-left text-center">
+                <button class="btn btn-secondary" (click)="refresh()">
+                  <i class="fas fa-redo-alt"></i>
+                </button>
+              </div>
+              <div class="col-sm-4 col-12 text-center">
+                <p class="mb-0 my-2">
+                  {{ "TotalRecordsCount" | localize: totalItems }}
+                </p>
+              </div>
+              <div class="col-sm-4 col-12">
+                <div class="float-sm-right m-auto">
+                  <abp-pagination-controls
+                    id="server"
+                    (pageChange)="getDataPage($event)"
+                  >
+                  </abp-pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  

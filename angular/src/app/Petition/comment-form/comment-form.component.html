@@ -1,0 +1,27 @@
+<div class="col-md-12">
+    <div class="row text-center bg-info">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <br><br>
+            <div class="card">
+                <h1 class="text-info">Hi {{user}}</h1>
+            </div>
+            <div style="border-radius: 15px;">
+                <br>
+                <h1 *ngIf="id == null">Add Your Comment here..</h1>
+                <h1 *ngIf="id != null">Edit Your Comment here..</h1>
+                <hr><br>
+
+                <form #commentForm="ngForm" (ngSubmit)="save()">
+
+                    <textarea class="form-control" rows="6" style="border-radius: 5px;" id="textArea"
+                        placeholder="type here..." name="message" placeholder="type here.." required
+                        [(ngModel)]="comment.message"></textarea>
+                    <br>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>

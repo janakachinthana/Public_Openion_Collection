@@ -1,0 +1,18 @@
+{
+  "remoteServiceBaseUrl": "http://localhost:21021",
+  "appBaseUrl": "http://hasithah-002-site8.itempurl.com",
+  "localeMappings": [
+    {
+      "from": "pt-BR",
+      "to": "pt"
+    },
+    {
+      "from": "zh-CN",
+      "to": "zh"
+    },
+    {
+      "from": "he-IL",
+      "to": "he"
+    }
+  ]
+}
